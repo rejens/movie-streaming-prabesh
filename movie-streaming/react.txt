@@ -1,0 +1,81 @@
+1.props: a value that is sent by a parent component to its child component  
+    props can also be default, child component can use default props if not 
+    sent by the parent component
+
+2. we can also type check the prop.. ie validate if it is string , int etc.
+
+3. state: it is data, it is of two types:
+    component level: used only by that component
+    app level: used by the whole app
+
+4. this is how you set state
+    import { useState } from "react";
+
+    const [example,setExample]=useState(value) //here value is the default value passed in the state
+    the value can be accessed through example, and we can update the value using setExample variable
+    
+    state cannot be directly changed so we have to use setExample()
+    setExample is a function. // setExample(updatedValue) noww the updated value will be set to the example
+
+5. children component: The children prop refers to the elements that are nested inside a component. 
+    It is a way to pass children elements from the parent component to the child component as a prop.
+    
+6. onClick event in react: onCLick={handleClick}
+    this calls the handleClick function 
+    
+    to pass an arguement : onClick={()=>handleClick(param)}
+
+7. use () when you have to scope js inside a jsx.
+
+8. context: a better way of storing global state.
+
+    since we are no longer going to pass data through props, in order for out components to get access
+    to the state, it should be wrapped inside a component provider. provider makes data available
+    to the components which are wrapped inside it.
+
+    first we create context and then use that context
+    we create an object of createContext() // 
+    
+    const context=createContext()
+
+    <context.provider value={{obj:obj}}
+    export default context;
+
+    import context from...
+    const value=context.useContext();
+
+    we have to export both the context and the name of the function //contextProvider
+    eg: export default context;
+        export {contextProvider}
+
+9. hooks cannot be nested inside anything
+
+10. use useEffect to run any piece of code that runs if there has been a change in any thing..
+
+11. .env is public ie. all the contents inside it can be viewed by inspecting from the client side.
+    so if we have to keep the secret key, create a backend, the user will first request the server and the server will then 
+    request for the api. This way it can be secure
+
+12. always use map() instead of forEach() to loop inside jsx. since the elements need to be returned inorder to be rendered.
+    and since map returns but not foreach, use map.
+
+    array.map(items)=>( ... do something here) // instead of{} () is used
+
+13. const obj = { name: "rejens", address: "dhulabari" };
+    const obj2 = { ...obj, age: 21, name: "rayamajhi" };
+    console.log(obj2);
+    // here obj2.name relaces the obj.name
+
+{isLoading && <img width="50px" src={Loading} alt="" />}
+
+14. if we dont pass any thing in use effect, it renders every time somethign renders , if we pass empty array '[]' it renders 
+    first time we open website, if we pass any value inside array, it renders every time some change happens in that value
+
+15. for tracking url change   
+
+    const location = useLocation();
+    const {id}=useParams();
+  useEffect(() => {
+    if (showType === "movie") updateSelectedMovieId(id);
+    
+  }, [location]);
